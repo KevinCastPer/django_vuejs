@@ -29,7 +29,7 @@ class CreateUserView(FormView):
         user_profile.gender =  form.cleaned_data['gender']
         user_profile.user = user
         user_profile.save()
-        return JsonResponse({'message':'Create Successfully'})
+        return JsonResponse({'message':'Create Successfully', 'valid': True})
 
     def form_invalid(self,form):
-        return JsonResponse({'error':form.errors})
+        return JsonResponse({'error':form.errors, 'valid': False})
